@@ -80,6 +80,7 @@ type StoreUpdaterProps<NodeType extends Node = Node, EdgeType extends Edge = Edg
   ReactFlowFieldsToTrack
 > & {
   rfId: string;
+  preserveStateOnUnmount?: boolean;
 };
 
 // rfId doesn't exist in ReactFlowProps, but it's one of the fields we want to update
