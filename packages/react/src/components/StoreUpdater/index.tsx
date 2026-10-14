@@ -130,9 +130,11 @@ export function StoreUpdater<NodeType extends Node = Node, EdgeType extends Edge
     setDefaultNodesAndEdges(props.defaultNodes, props.defaultEdges);
 
     return () => {
-      // when we reset the store we also need to reset the previous fields
-      previousFields.current = initPrevValues;
-      reset();
+      if (!props.preserveStateOnUnmount) {
+        // when we reset the store we also need to reset the previous fields
+        previousFields.current = initPrevValues;
+        reset();
+      }
     };
   }, []);
 
