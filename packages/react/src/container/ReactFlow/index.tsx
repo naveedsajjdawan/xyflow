@@ -27,6 +27,7 @@ function ReactFlow<NodeType extends Node = Node, EdgeType extends Edge = Edge>(
     edges,
     defaultNodes,
     defaultEdges,
+    preserveStateOnUnmount = false,
     className,
     nodeTypes,
     edgeTypes,
@@ -196,6 +197,7 @@ function ReactFlow<NodeType extends Node = Node, EdgeType extends Edge = Edge>(
           edges={edges}
           defaultNodes={defaultNodes}
           defaultEdges={defaultEdges}
+          preserveStateOnUnmount={preserveStateOnUnmount}
           onConnect={onConnect}
           onConnectStart={onConnectStart}
           onConnectEnd={onConnectEnd}
@@ -277,6 +279,7 @@ function ReactFlow<NodeType extends Node = Node, EdgeType extends Edge = Edge>(
           zoomActivationKeyCode={zoomActivationKeyCode}
           onlyRenderVisibleElements={onlyRenderVisibleElements}
           defaultViewport={defaultViewport}
+          preserveStateOnUnmount={preserveStateOnUnmount}
           translateExtent={translateExtent}
           minZoom={minZoom}
           maxZoom={maxZoom}
