@@ -31,6 +31,7 @@ export function useVisibleEdgeIds(onlyRenderVisible: boolean, isEdgeVisible?: Is
               sourceNode &&
               targetNode &&
               (isEdgeVisible ?? defaultIsEdgeVisible)({
+                edge,
                 sourceNode,
                 targetNode,
                 width: s.width,
