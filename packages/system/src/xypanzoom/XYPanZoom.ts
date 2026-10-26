@@ -107,7 +107,7 @@ export function XYPanZoom({
     if (d3Selection) {
       return new Promise<boolean>((resolve) => {
         d3ZoomInstance?.interpolate(options?.interpolate === 'linear' ? interpolate : interpolateZoom).transform(
-          getD3Transition(d3Selection, options?.duration, options?.ease, () => resolve(true)),
+          getD3Transition(d3Selection, options?.duration, options?.ease, () => resolve(true), () => resolve(false)),
           transform
         );
       });
@@ -279,7 +279,7 @@ export function XYPanZoom({
     if (d3Selection) {
       return new Promise<boolean>((resolve) => {
         d3ZoomInstance?.interpolate(options?.interpolate === 'linear' ? interpolate : interpolateZoom).scaleTo(
-          getD3Transition(d3Selection, options?.duration, options?.ease, () => resolve(true)),
+          getD3Transition(d3Selection, options?.duration, options?.ease, () => resolve(true), () => resolve(false)),
           zoom
         );
       });
@@ -292,7 +292,7 @@ export function XYPanZoom({
     if (d3Selection) {
       return new Promise<boolean>((resolve) => {
         d3ZoomInstance?.interpolate(options?.interpolate === 'linear' ? interpolate : interpolateZoom).scaleBy(
-          getD3Transition(d3Selection, options?.duration, options?.ease, () => resolve(true)),
+          getD3Transition(d3Selection, options?.duration, options?.ease, () => resolve(true), () => resolve(false)),
           factor
         );
       });
