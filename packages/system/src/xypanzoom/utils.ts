@@ -23,14 +23,28 @@ export const isRightClickPan = (panOnDrag: boolean | number[], usedButton: numbe
 // taken from d3-ease: https://github.com/d3/d3-ease/blob/main/src/cubic.js
 const defaultEase = (t: number) => ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
 
-export const getD3Transition = (selection: D3SelectionInstance, duration = 0, ease = defaultEase, onEnd = () => {}) => {
+export const getD3Transition = (
+  selection: D3SelectionInstance,
+  duration = 0,
+  ease = defaultEase,
+  onEnd = () => {},
+  onInterrupt = () => {}
+) => {
   const hasDuration = typeof duration === 'number' && duration > 0;
 
   if (!hasDuration) {
     onEnd();
   }
 
-  return hasDuration ? selection.transition().duration(duration).ease(ease).on('end', onEnd) : selection;
+  return hasDuration
+    ? selection
+        .transition()
+        .duration(duration)
+        .ease(ease)
+        .on('end', onEnd)
+        .on('interrupt', onInterrupt)
+        .on('cancel', onInterrupt)
+    : selection;
 };
 
 export const wheelDelta = (event: any) => {
